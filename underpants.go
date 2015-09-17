@@ -537,7 +537,8 @@ func setup(c *conf, port int) (*http.ServeMux, error) {
     }
 
     // this only happens when someone edits the auth url
-    if !strings.HasSuffix(u.Email, "@" + c.Oauth.Domain) {
+    //A quick hack to allow (only) @gmail.com
+    if !strings.HasSuffix(u.Email, "@gmail.com") {
       http.Error(w,
         http.StatusText(http.StatusForbidden),
         http.StatusForbidden)
